@@ -17,7 +17,7 @@ import static co.com.experimentality.prueba.utils.constans.ConstantTypeClass.RUN
 @CucumberOptions(
         features = "src/test/resources/features/compras.feature",
         glue = "co.com.experimentality.prueba.stepdefinitions",
-        tags = "@removeAItem",
+        tags = "@searchAnItem",
         snippets = SnippetType.CAMELCASE
 )
 

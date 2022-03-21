@@ -3,10 +3,8 @@ package co.com.experimentality.prueba.stepdefinitions;
 import co.com.experimentality.prueba.questions.CorrectlyPrice;
 import co.com.experimentality.prueba.questions.InSummaryPurchase;
 import co.com.experimentality.prueba.questions.MessageDelete;
-import co.com.experimentality.prueba.tasks.compras.AddItem;
-import co.com.experimentality.prueba.tasks.compras.AddItems;
-import co.com.experimentality.prueba.tasks.compras.IncreaseQuantity;
-import co.com.experimentality.prueba.tasks.compras.RemoveItem;
+import co.com.experimentality.prueba.questions.ViewASpecificItem;
+import co.com.experimentality.prueba.tasks.compras.*;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -59,6 +57,36 @@ public class StepdefinitionCompras {
                 AddItems.toShoppingCart(),
                 RemoveItem.inSummary()
         );
+    }
+
+    @When("^i decide to remove all items$")
+    public void iDecideToRemoveAllItems() {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                AddItems.toShoppingCart(),
+                RemoveAllItems.inScreen()
+        );
+    }
+
+    @When("^i decide to cancel an item withdrawal$")
+    public void iDecideToCancelAnItemWithdrawal() {
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                AddItem.shoppingCart(),
+                CancelRemove.items()
+        );
+    }
+
+    @When("^i search an item$")
+    public void iSearchAnItem() {
+       OnStage.theActorInTheSpotlight().attemptsTo(
+               SearchAnItem.inPage()
+       );
+    }
+
+    @Then("^i visualise a product related$")
+    public void iVisualiseAProductRelated() {
+        OnStage.theActorInTheSpotlight().should(GivenWhenThen.seeThat(
+                ViewASpecificItem.inScreen()
+        ));
     }
 
     @Then("^i see the deleted message$")
