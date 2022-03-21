@@ -12,8 +12,12 @@ public class SummaryUX {
     public static final Target BTN_SUMMARY_REMOVE = Target.the("Remove item {0}")
             .locatedBy("//strong[contains(text(),'{0}')]/ancestor::div[3]//button[@title='Remover item']");
     public static final Target BTN_CONFIRM_DELETE = Target.the("Confirm delete item")
-            .locatedBy("//button[contains(text(),', eliminar')]");
+            .locatedBy("//button[contains(text(),', eliminar')]|//button[contains(text(),', vaciar')]");
     public static final Target LBL_MESSAGE_DELETE = Target.the("Message confirm delete item")
             .locatedBy("//h2[@class='swal2-title']");
+    public static final Target BTN_REMOVE_ALL = Target.the("Button remove all items")
+            .locatedBy("//button[@title='Remover todos los items']");
+    public static final Target BTN_DONT_CONFIRM = Target.the("I dont confirm delete item")
+            .locatedBy("//button[contains(text(),'Cancelar')]");
 
 }
